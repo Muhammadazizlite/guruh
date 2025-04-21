@@ -1,12 +1,18 @@
 import fs from "fs"
-let baza =JSON.parse(fs.readFileSync("./database/users.json","utf-8"))
-function GET(req,res){
-      res.send("Salom")
-}
-function POST(req,res){
-      const {name,age}=req.body
-      res.send("salom 2")
-}
+let baza =JSON.parse(fs.readFileSync("./src/database/users.json","utf-8"))
+// function GET(id) {
+//       const users = readUsers();
+//       return users.find(user => user.id === id);
+//     }
+// const GET_SINGLE = (req, res) => {
+//       const { id } = req.params;
+//       const user = GET(id);
+//       if (!user) {
+//         return res.status(404).send("User not found"); 
+//       }
+    
+//       res.status(200).send(user);
+//     };
 function POSTLOGIN(req,res){
       const {name,age}=req.body
       res.send(JSON.stringify(baza))
@@ -29,9 +35,9 @@ function POSTCRE(req,res){
                   password
             }
             baza.push(newbaby)
-            fs.writeFileSync("../database/users.json",JSON.stringify(baza))
+            fs.writeFileSync("./src/database/users.json",JSON.stringify(baza))
             res.status(201)
-            res.send("Success added")
+            res.send(newbaby.email)
       }
       catch(error){
             res.status(400)
@@ -40,9 +46,9 @@ function POSTCRE(req,res){
 }
 
 export default {
-      GET,
-      POST,
+      // GET,
       POSTLOGIN,
       POSTREG,
-      POSTCRE
+      POSTCRE,
+      // GET_SINGLE
 }
