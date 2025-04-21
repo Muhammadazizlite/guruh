@@ -6,5 +6,6 @@ const router = Router();
 
 router
       .get("api/users",userController.GET)
+      .post("api/users",userController.POST)
 
 export default router
