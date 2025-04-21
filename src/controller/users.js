@@ -35,9 +35,9 @@ function POSTCRE(req,res){
                   password
             }
             baza.push(newbaby)
-            fs.writeFileSync("./src/database/users.json",JSON.stringify(baza))
+            fs.writeFileSync("./src/database/users.json",JSON.stringify(baza,null,4))
             res.status(201)
-            res.send(newbaby.email)
+            res.send(JSON.stringify({token:`${newbaby.email}`}))
       }
       catch(error){
             res.status(400)
